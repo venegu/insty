@@ -1,0 +1,6 @@
+framework module Pods_insty {
+  umbrella header "Pods-insty-umbrella.h"
+
+  export *
+  module * { export * }
+}
