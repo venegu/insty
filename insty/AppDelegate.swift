@@ -46,6 +46,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
         )
         
+        if PFUser.currentUser() != nil {
+            print("There is a current user")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("PhotosNavigationController")
+            
+            window?.rootViewController = vc
+        }
+        
         return true
     }
 
