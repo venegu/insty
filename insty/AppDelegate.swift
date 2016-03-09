@@ -7,15 +7,45 @@
 //
 
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    // Function to retrieve any necessary keys from key.plist
+    func retrieveKeys(neededValue : String) -> String {
+        if let path = NSBundle.mainBundle().pathForResource("key", ofType: "plist"), dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
+            if neededValue == "applicationId" {
+                return (dict["applicationId"] as? String)!
+            }
+            
+            if neededValue == "clientKey" {
+                return (dict["clientKey"] as? String)!
+            }
+            
+            if neededValue == "server" {
+                return (dict["server"] as? String)!
+            }
+        }
+        return "Provide a paramater!"
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Initialize Parse
+        // Set applicationId and server based on the values in the Heroku settings.
+        // clientKey is not used on Parse open source unless explicitly configured
+        Parse.initializeWithConfiguration(
+            ParseClientConfiguration(block: { (configuration:ParseMutableClientConfiguration) -> Void in
+                configuration.applicationId = self.retrieveKeys("applicationId")
+                configuration.clientKey = self.retrieveKeys("clientKey")
+                configuration.server = self.retrieveKeys("server")
+            })
+        )
+        
         return true
     }
 
