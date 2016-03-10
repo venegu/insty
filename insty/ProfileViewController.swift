@@ -8,8 +8,11 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
-
+class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    @IBOutlet weak var importedImage: UIImageView!
+    @IBOutlet weak var photoCaptionField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,6 +22,29 @@ class ProfileViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func onUploadImage(sender: AnyObject) {
+        
+        let image = UIImagePickerController()
+        image.delegate = self
+        image.sourceType = UIImagePickerControllerSourceType.Camera
+        image.allowsEditing = false
+        self.presentViewController(image, animated: true, completion: nil)
+    }
+    
+    @IBAction func onLibraryImage(sender: AnyObject) {
+        let image = UIImagePickerController()
+        image.delegate = self
+        image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        image.allowsEditing = false
+        self.presentViewController(image, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        print("Image selected")
+        self.dismissViewControllerAnimated(true, completion: nil)
+        importedImage.image = image
     }
     
 
