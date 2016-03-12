@@ -127,10 +127,10 @@
             </objects>
             <point key="canvasLocation" x="1846" y="-419"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Upload View Controller-->
         <scene sceneID="7Pq-YU-ytx">
             <objects>
-                <viewController id="CJh-0E-oZN" customClass="ProfileViewController" customModule="insty" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="CJh-0E-oZN" customClass="UploadViewController" customModule="insty" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Orp-Qa-4op"/>
                         <viewControllerLayoutGuide type="bottom" id="Xrb-t6-uBu"/>
