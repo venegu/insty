@@ -48,7 +48,7 @@ class UploadViewController: UIViewController, UINavigationControllerDelegate, UI
     }
     
     @IBAction func onSubmitButton(sender: AnyObject) {
-        let resizeImage = Post.resize(importedImage.image!, newSize: CGSize(width: 300, height: 500))
+        let resizeImage = Post.resize(importedImage.image!, newSize: CGSize(width: 250, height: 250))
         Post.postUserImage(resizeImage, withCaption: photoCaptionField.text) { (success: Bool, error: NSError?) -> Void in
             
             if success {
@@ -59,6 +59,7 @@ class UploadViewController: UIViewController, UINavigationControllerDelegate, UI
             } else {
                 // Network error pop up?
                 print("Error posting image")
+                print(error?.localizedDescription)
             }
             
         }

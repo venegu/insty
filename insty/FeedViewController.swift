@@ -21,11 +21,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.delegate = self
         tableView.dataSource = self
-        
         fetchPosts()
     }
     
-    // Making sure most recent post is showing
+    // Making sure most recent post is showing && time crunch better way to do this?
     override func viewWillAppear(animated: Bool) {
         fetchPosts()
         tableView.reloadData()

@@ -8,18 +8,71 @@
 
 import UIKit
 import Parse
+import ParseUI
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    @IBOutlet weak var profileImageView: PFImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        profileImageView.layer.cornerRadius = profileImageView.frame.size.height/2
+        profileImageView.layer.borderWidth = 1
+        profileImageView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        profileImageView.clipsToBounds = true
+        
+        getProfileImage()
+
+        self.title = "\(PFUser.currentUser()!.username!)"
+        
+        let tap = UITapGestureRecognizer(target: self, action: Selector("setProfileImage:"))
+        tap.numberOfTapsRequired = 1
+        profileImageView.userInteractionEnabled = true
+        profileImageView.addGestureRecognizer(tap)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func getProfileImage() {
+        Post.getUserProfileImage((PFUser.currentUser()?.username!)!, success: { (userData: PFFile?) -> () in
+            if let userData = userData {
+                self.profileImageView.file = userData
+                self.profileImageView.loadInBackground()
+            }
+            }) { (error: NSError?) -> () in
+                print(error?.localizedDescription)
+        }
+
+        
+    }
+    
+    func setProfileImage(sender: UITapGestureRecognizer) {
+        let image = UIImagePickerController()
+        image.delegate = self
+        image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        image.allowsEditing = false
+        self.presentViewController(image, animated: true, completion: nil)
+    }
+    
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        profileImageView.image = image
+        let resizeImage = Post.resize(profileImageView.image!, newSize: CGSize(width: 240, height: 240))
+        Post.postUserProfileImage(resizeImage) { (success: Bool, error: NSError?) -> Void in
+            if success {
+                print("we have lift off!")
+            } else {
+                print(error?.localizedDescription)
+            }
+            
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     @IBAction func onLogoutButton(sender: AnyObject) {

@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import ParseUI
 import Parse
+import ParseUI
 
 class PostCell: PFTableViewCell {
 
@@ -28,7 +28,23 @@ class PostCell: PFTableViewCell {
     
     var post: PFObject! {
         didSet {
+            
             let author = post["author"] as? PFUser
+            profileImageView.layer.cornerRadius = profileImageView.frame.size.height/2
+            profileImageView.layer.borderWidth = 1
+            profileImageView.layer.borderColor = UIColor.lightGrayColor().CGColor
+            profileImageView.clipsToBounds = true
+            
+            Post.getUserProfileImage((author?.username!)!, success: { (imageData: PFFile?) -> () in
+                if let imageData = imageData {
+                    self.profileImageView.file = imageData
+                    self.profileImageView.loadInBackground()
+                }
+                
+                }) { (error : NSError?) -> () in
+                    print(error?.localizedDescription)
+            }
+           
             self.nameLabel.text = author?.username!
             self.timeLabel.text = Post.gettingTimestamp(post.createdAt!.timeIntervalSinceNow)
             

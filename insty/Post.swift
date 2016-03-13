@@ -65,6 +65,28 @@ class Post: NSObject {
         return newImage
     }
     
+    class func postUserProfileImage(image: UIImage?, withCompletion completion: PFBooleanResultBlock?) {
+        
+        let user = PFObject(className: "UserData")
+        user["username"] = (PFUser.currentUser()?.username)!
+        user["profileImage"] = getPFFileFromImage(image)
+        user.saveInBackgroundWithBlock (completion)
+        print("done")
+    }
+    
+    class func getUserProfileImage(username: String, success: (PFFile?) -> (), failure: (NSError?) -> ()) {
+        let query = PFQuery(className: "UserData")
+        query.whereKey("username", equalTo: username)
+        
+        query.getFirstObjectInBackgroundWithBlock { (user: PFObject?, error: NSError?) -> Void in
+            if(error == nil) {
+                success(user!["profileImage"] as? PFFile)
+            } else {
+                failure(error)
+            }
+        }
+    }
+    
     class func gettingTimestamp(time : NSTimeInterval) -> String {
         let timeSeconds = -Int(time)
         var timeSince: Int = 0
