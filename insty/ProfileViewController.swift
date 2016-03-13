@@ -13,6 +13,9 @@ import ParseUI
 class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var profileImageView: PFImageView!
+    var image: PFFile!
+    var username: String!
+    var imageUsername:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,15 +26,53 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         profileImageView.layer.borderWidth = 1
         profileImageView.layer.borderColor = UIColor.lightGrayColor().CGColor
         profileImageView.clipsToBounds = true
+
+        if PFUser.currentUser()?.username == username {
+            print(username)
+            self.title = "\(username)"
+            imageUsername = username
+            let tap = UITapGestureRecognizer(target: self, action: Selector("setProfileImage:"))
+            tap.numberOfTapsRequired = 1
+            profileImageView.userInteractionEnabled = true
+            profileImageView.addGestureRecognizer(tap)
+        } else if username != nil {
+            self.title = "\(username!)"
+            imageUsername = username!
+        } else {
+            self.title = "\(PFUser.currentUser()!.username!)"
+            imageUsername = PFUser.currentUser()?.username
+            let tap = UITapGestureRecognizer(target: self, action: Selector("setProfileImage:"))
+            tap.numberOfTapsRequired = 1
+            profileImageView.userInteractionEnabled = true
+            profileImageView.addGestureRecognizer(tap)
+        }
         
         getProfileImage()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
 
-        self.title = "\(PFUser.currentUser()!.username!)"
+        if PFUser.currentUser()?.username == username {
+            self.title = "\(username)"
+            imageUsername = username
+            print(username)
+            let tap = UITapGestureRecognizer(target: self, action: Selector("setProfileImage:"))
+            tap.numberOfTapsRequired = 1
+            profileImageView.userInteractionEnabled = true
+            profileImageView.addGestureRecognizer(tap)
+        } else if username != nil {
+            self.title = "\(username!)"
+            imageUsername = username!
+        } else {
+            self.title = "\(PFUser.currentUser()!.username!)"
+            imageUsername = PFUser.currentUser()?.username
+            let tap = UITapGestureRecognizer(target: self, action: Selector("setProfileImage:"))
+            tap.numberOfTapsRequired = 1
+            profileImageView.userInteractionEnabled = true
+            profileImageView.addGestureRecognizer(tap)
+        }
         
-        let tap = UITapGestureRecognizer(target: self, action: Selector("setProfileImage:"))
-        tap.numberOfTapsRequired = 1
-        profileImageView.userInteractionEnabled = true
-        profileImageView.addGestureRecognizer(tap)
+        getProfileImage()
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,16 +81,14 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     func getProfileImage() {
-        Post.getUserProfileImage((PFUser.currentUser()?.username!)!, success: { (userData: PFFile?) -> () in
+        Post.getUserProfileImage(imageUsername, success: { (userData: PFFile?) -> () in
             if let userData = userData {
                 self.profileImageView.file = userData
                 self.profileImageView.loadInBackground()
             }
             }) { (error: NSError?) -> () in
-                print(error?.localizedDescription)
+                print(error!.localizedDescription)
         }
-
-        
     }
     
     func setProfileImage(sender: UITapGestureRecognizer) {
@@ -68,7 +107,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             if success {
                 print("we have lift off!")
             } else {
-                print(error?.localizedDescription)
+                print(error!.localizedDescription)
             }
             
             self.dismissViewControllerAnimated(true, completion: nil)

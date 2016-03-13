@@ -10,6 +10,10 @@ import UIKit
 import Parse
 import ParseUI
 
+@objc protocol PostCellDelegate {
+    optional func postCellAuthorProfile(sender: AnyObject?)
+}
+
 class PostCell: PFTableViewCell {
 
     /*
@@ -25,6 +29,8 @@ class PostCell: PFTableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var photoImageView: PFImageView!
     @IBOutlet weak var captionLabel: UILabel!
+    
+    var delegate: PostCellDelegate?
     
     var post: PFObject! {
         didSet {
@@ -53,7 +59,17 @@ class PostCell: PFTableViewCell {
                 self.photoImageView.loadInBackground()
             }
             
+            let tap = UITapGestureRecognizer(target: self, action: Selector("goToProfile:"))
+            tap.numberOfTapsRequired = 1
+            profileImageView.userInteractionEnabled = true
+            profileImageView.addGestureRecognizer(tap)
+            
             self.captionLabel.text = post["caption"] as? String
         }
+    }
+    
+    func goToProfile(sender: UITapGestureRecognizer) {
+        delegate?.postCellAuthorProfile!(sender)
+        print("tapped")
     }
 }

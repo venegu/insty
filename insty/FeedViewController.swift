@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PostCellDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -46,7 +46,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("InstagramCell", forIndexPath: indexPath) as! PostCell
-        
+        cell.delegate = self
         if posts != nil {
             let post = posts![indexPath.row]
             cell.post = post
@@ -74,15 +74,32 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    var userProfileImage: PFFile?
+    var username:String?
+    
+    func postCellAuthorProfile(sender: AnyObject?) {
+        print("ran")
+        let view = (sender as! UITapGestureRecognizer).view
+        let cell = view?.superview?.superview as! PostCell
+        
+        let profileViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
+        self.navigationController?.pushViewController(profileViewController, animated: true)
+        
+        profileViewController.image = cell.profileImageView.file
+        profileViewController.username = cell.nameLabel.text
+    }
+    
 
-    /*
+   /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+
     }
     */
+    
 
 }

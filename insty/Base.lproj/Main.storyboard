@@ -191,7 +191,7 @@
         <!--Profile View Controller-->
         <scene sceneID="PsG-ZU-9Nc">
             <objects>
-                <viewController id="lRY-gC-1sj" customClass="ProfileViewController" customModule="insty" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="lRY-gC-1sj" customClass="ProfileViewController" customModule="insty" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zvE-Gl-sIh"/>
                         <viewControllerLayoutGuide type="bottom" id="go2-TQ-VRm"/>
@@ -261,11 +261,11 @@
             </objects>
             <point key="canvasLocation" x="1421" y="219"/>
         </scene>
-        <!--Profile-->
+        <!--Me-->
         <scene sceneID="K9L-wo-TLL">
             <objects>
-                <navigationController storyboardIdentifier="ProfileNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="6GF-7P-QGl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="rQD-LW-zxu"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6GF-7P-QGl" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Me" id="rQD-LW-zxu"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oEL-MX-lee">
