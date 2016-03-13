@@ -64,5 +64,41 @@ class Post: NSObject {
         UIGraphicsEndImageContext()
         return newImage
     }
+    
+    class func gettingTimestamp(time : NSTimeInterval) -> String {
+        let timeSeconds = -Int(time)
+        var timeSince: Int = 0
+        
+        if timeSeconds == 0 {
+            return "Now"
+        }
+        
+        if timeSeconds <= 60 {
+            timeSince = timeSeconds
+            return "\(timeSince)s"
+        }
+        
+        if timeSeconds/60 < 60 {
+            timeSince = timeSeconds/60
+            return "\(timeSince)m"
+        }
+        
+        if (timeSeconds/60)/60 < 24 {
+            timeSince = (timeSeconds/60)/60
+            return "\(timeSince)h"
+        }
+        
+        if ((timeSeconds/60)/60)/24 < 365 {
+            timeSince = ((timeSeconds/60)/60)/24
+            return "\(timeSince)d"
+        }
+        
+        if (((timeSeconds/60)/60)/24)/365 < 100 {
+            timeSince = ((((timeSeconds)/60)/60)/24)/365
+            return "\(timeSince)y"
+        }
+        
+        return "\(timeSince)"
+    }
 
 }

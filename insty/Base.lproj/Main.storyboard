@@ -71,33 +71,33 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InstagramCell" rowHeight="269" id="ebs-b6-VGo" customClass="InstagramCell" customModule="insty" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InstagramCell" rowHeight="269" id="ebs-b6-VGo" customClass="PostCell" customModule="insty" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="320" height="269"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ebs-b6-VGo" id="UN2-t0-dUu">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="268.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jvf-OE-6Xj">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jvf-OE-6Xj" customClass="PFImageView">
                                                     <rect key="frame" x="8" y="12" width="30" height="30"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QP5-ta-ynS">
-                                                    <rect key="frame" x="56" y="17" width="42" height="21"/>
+                                                    <rect key="frame" x="56" y="17" width="99" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hst-iI-ME2">
-                                                    <rect key="frame" x="270" y="18" width="42" height="21"/>
+                                                    <rect key="frame" x="187" y="18" width="125" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xjV-1v-rUu">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xjV-1v-rUu" customClass="PFImageView">
                                                     <rect key="frame" x="0.0" y="56" width="320" height="167"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tl-NU-byC">
-                                                    <rect key="frame" x="139" y="231" width="42" height="21"/>
+                                                    <rect key="frame" x="84" y="231" width="152" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -105,11 +105,11 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="authorLabel" destination="QP5-ta-ynS" id="cOt-ou-cVL"/>
-                                            <outlet property="captionLabel" destination="1tl-NU-byC" id="mi6-3M-ZHn"/>
-                                            <outlet property="photoImageView" destination="xjV-1v-rUu" id="6iW-bE-5Rn"/>
-                                            <outlet property="profileImageView" destination="Jvf-OE-6Xj" id="2fy-TB-Q43"/>
-                                            <outlet property="timeLabel" destination="hst-iI-ME2" id="U3y-C0-hC9"/>
+                                            <outlet property="captionLabel" destination="1tl-NU-byC" id="1n8-XQ-hPR"/>
+                                            <outlet property="nameLabel" destination="QP5-ta-ynS" id="FUT-XW-mnC"/>
+                                            <outlet property="photoImageView" destination="xjV-1v-rUu" id="sll-tc-2rq"/>
+                                            <outlet property="profileImageView" destination="Jvf-OE-6Xj" id="9tj-JX-7O1"/>
+                                            <outlet property="timeLabel" destination="hst-iI-ME2" id="ojv-Ps-ZZn"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

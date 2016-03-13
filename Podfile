@@ -5,6 +5,8 @@ use_frameworks!
 
 target 'insty' do
     pod 'Parse'
+    pod 'ParseUI'
+    pod 'MBProgressHUD'
 end
 
 target 'instyTests' do

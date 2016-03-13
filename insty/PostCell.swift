@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import ParseUI
+import Parse
 
 class PostCell: PFTableViewCell {
 
@@ -17,5 +19,25 @@ class PostCell: PFTableViewCell {
         // Drawing code
     }
     */
-
+    
+    @IBOutlet weak var profileImageView: PFImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var photoImageView: PFImageView!
+    @IBOutlet weak var captionLabel: UILabel!
+    
+    var post: PFObject! {
+        didSet {
+            let author = post["author"] as? PFUser
+            self.nameLabel.text = author?.username!
+            self.timeLabel.text = Post.gettingTimestamp(post.createdAt!.timeIntervalSinceNow)
+            
+            if let mediaData = post["media"] as? PFFile {
+                self.photoImageView.file = mediaData
+                self.photoImageView.loadInBackground()
+            }
+            
+            self.captionLabel.text = post["caption"] as? String
+        }
+    }
 }
