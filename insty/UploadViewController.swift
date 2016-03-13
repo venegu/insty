@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class UploadViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
@@ -48,9 +49,11 @@ class UploadViewController: UIViewController, UINavigationControllerDelegate, UI
     }
     
     @IBAction func onSubmitButton(sender: AnyObject) {
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        
         let resizeImage = Post.resize(importedImage.image!, newSize: CGSize(width: 250, height: 250))
         Post.postUserImage(resizeImage, withCaption: photoCaptionField.text) { (success: Bool, error: NSError?) -> Void in
-            
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
             if success {
                 self.importedImage.image = nil
                 self.photoCaptionField.text = nil
