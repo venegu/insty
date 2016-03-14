@@ -34,6 +34,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        UINavigationBar.appearance().translucent = false
+        UINavigationBar.appearance().barTintColor = UIColor(red: 63.0/255.0, green: 114.0/255.0, blue: 155.0/255.0, alpha: 1.0)
+        UINavigationBar.appearance().barStyle = UIBarStyle.Default
+        UINavigationBar.appearance().tintColor =  UIColor.whiteColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+
+        
+        UITabBar.appearance().translucent = false
+        UITabBar.appearance().barTintColor = UIColor(red: 60.0/255, green: 60.0/255, blue: 60.0/255, alpha: 1.0)
+        UITabBar.appearance().tintColor = UIColor.whiteColor()
+        
+        
         
         // Initialize Parse
         // Set applicationId and server based on the values in the Heroku settings.

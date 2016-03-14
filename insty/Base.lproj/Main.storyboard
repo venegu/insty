@@ -237,6 +237,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qcu-gq-spB"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="tableView" destination="osQ-IV-aaw" id="Boo-U3-vbc"/>
@@ -319,6 +320,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QQ8-Ws-HJc"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="importedImage" destination="HjZ-dX-CCN" id="m1T-HU-mlS"/>
@@ -362,6 +364,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="profileImageView" destination="V3n-36-T7f" id="2Ci-af-jBC"/>
@@ -396,6 +399,7 @@
                 <navigationController storyboardIdentifier="ImageNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="1Ol-GP-3Ze" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Upload" image="Camera Filled" id="baT-EL-tlQ"/>
                     <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="swE-Dp-vgA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -416,6 +420,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6GF-7P-QGl" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Me" image="Gender Neutral User Filled" id="rQD-LW-zxu"/>
                     <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oEL-MX-lee">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -436,6 +441,7 @@
                 <navigationController storyboardIdentifier="FeedNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="UhF-R1-ssm" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Activity" image="Dog House Filled" id="aj6-RJ-4IO"/>
                     <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nEd-x2-vch">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
