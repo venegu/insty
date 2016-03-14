@@ -13,12 +13,25 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
-    
+    @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        usernameField.layer.cornerRadius = 2
+        passwordField.layer.cornerRadius = 2
+        
+        signInButton.layer.cornerRadius = 2
+        signInButton.layer.borderWidth = 1
+        signInButton.layer.borderColor = UIColor.whiteColor().CGColor
+        signInButton.enabled = false
+        
+        signUpButton.layer.cornerRadius = 2
+        signUpButton.layer.borderWidth = 1
+        signUpButton.layer.borderColor = UIColor.whiteColor().CGColor
+        signUpButton.enabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,6 +69,39 @@ class LoginViewController: UIViewController {
             
         }
     }
+    
+    
+    @IBAction func onPasswordEditingChange(sender: AnyObject) {
+        if passwordField.text == "" {
+            signInButton.enabled = false
+            UIButton.animateWithDuration(0.5, animations: {
+                self.signInButton.alpha = 0.6
+            })
+            
+            signUpButton.enabled = false
+            UIButton.animateWithDuration(0.5, animations: {
+                self.signUpButton.alpha = 0.6
+            })
+            
+        } else {
+            if usernameField.text != "" {
+                signInButton.enabled = true
+            
+                UIButton.animateWithDuration(0.5, animations: {
+                    self.signInButton.alpha = 1.0
+                })
+            
+                signUpButton.enabled = true
+                UIButton.animateWithDuration(0.5, animations: {
+                    self.signUpButton.alpha = 1.0
+                })
+            }
+        }
+    }
+    
+    
+    
+    
     /*
     // MARK: - Navigation
 
