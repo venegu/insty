@@ -36,6 +36,13 @@ class PostCell: PFTableViewCell {
         didSet {
             
             let author = post["author"] as? PFUser
+            self.nameLabel.text = author?.username!
+            
+            let nameTap = UITapGestureRecognizer(target: self, action: Selector("goToProfile:"))
+            nameTap.numberOfTapsRequired = 1
+            nameLabel.userInteractionEnabled = true
+            nameLabel.addGestureRecognizer(nameTap)
+            
             profileImageView.layer.cornerRadius = profileImageView.frame.size.height/2
             profileImageView.layer.borderWidth = 1
             profileImageView.layer.borderColor = UIColor.lightGrayColor().CGColor
@@ -51,7 +58,7 @@ class PostCell: PFTableViewCell {
                     print(error?.localizedDescription)
             }
            
-            self.nameLabel.text = author?.username!
+            
             self.timeLabel.text = Post.gettingTimestamp(post.createdAt!.timeIntervalSinceNow)
             
             if let mediaData = post["media"] as? PFFile {
@@ -59,10 +66,10 @@ class PostCell: PFTableViewCell {
                 self.photoImageView.loadInBackground()
             }
             
-            let tap = UITapGestureRecognizer(target: self, action: Selector("goToProfile:"))
-            tap.numberOfTapsRequired = 1
+            let profileTap = UITapGestureRecognizer(target: self, action: Selector("goToProfile:"))
+            profileTap.numberOfTapsRequired = 1
             profileImageView.userInteractionEnabled = true
-            profileImageView.addGestureRecognizer(tap)
+            profileImageView.addGestureRecognizer(profileTap)
             
             self.captionLabel.text = post["caption"] as? String
         }
