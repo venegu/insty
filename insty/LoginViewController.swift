@@ -138,7 +138,7 @@ class LoginViewController: UIViewController {
 
 // MARK: - Custom Text Field Class
 
-class CustomTextField: UITextField{
+class CustomTextField: UITextField {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!

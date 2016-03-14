@@ -25,7 +25,15 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] Added a diagonal gradient in the login view!
+- [x] Modified the UITextFields to look more like the UITextFields in the login view of the Instagram app using a class.
+- [x] Created a rather swell UI with icons and pretty things that looks similar to the Instagram app (with my own touches).
+- [x] Accounted for user not typing anything into the form in the login view (the buttons are un-enabled until a password is provided).
+- [x] When the password text field is edited the buttons opacity is animated, similar to the Instagram app. If there is text typed into the password text field the opacity increases otherwise it decreases signifying that the buttons won't work if tapped (UX things I guess?).
+- [x] Hiding password entry.
+- [x] Auto layout @_@.
+- [x] Hides navigation bar when swiping on the feed table view, like the Instagram app.
+- [x] Upon posting an image to parse the app segues back to the feed view and will display the recently added post and caption (albeit the way I did it was hacky because I was in a hurry :P).
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
@@ -43,6 +51,11 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Notes
 
 Describe any challenges encountered while building the app.
+
+## Credits
+
+   - All of the icons IN the app are from [Icons8](https://icons8.com)
+   - The super cute app icon is by [Tahsin Tahil](https://www.iconfinder.com/tahsintahil) from [Iconfinder](https://www.iconfinder.com/icons/381384/instagram_logo_icon#size=128)
 
 ## License
 

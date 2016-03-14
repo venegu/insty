@@ -21,6 +21,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.delegate = self
         tableView.dataSource = self
+        navigationController?.hidesBarsOnSwipe = true
         fetchPosts()
     }
     
@@ -67,7 +68,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.tableView.reloadData()
             } else {
                 // Network error handling here
-                print("Error getting stuffz from parse")
+                print(error?.localizedDescription)
             }
         }
         
