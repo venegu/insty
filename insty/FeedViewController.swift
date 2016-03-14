@@ -18,9 +18,15 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let logo = UIImage(named: "Instagram")!
+        let imageView = UIImageView(image: logo);
+        imageView.frame.size.height = (navigationController?.navigationBar.frame.size.height)! - 15;
+        imageView.contentMode = .ScaleAspectFit;
+        navigationItem.titleView = imageView;
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.scrollsToTop = true
         navigationController?.hidesBarsOnSwipe = true
         fetchPosts()
     }
@@ -84,7 +90,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let profileViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
         self.navigationController?.pushViewController(profileViewController, animated: true)
-        
         profileViewController.image = cell.profileImageView.file
         profileViewController.username = cell.nameLabel.text
     }

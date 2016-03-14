@@ -22,6 +22,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         
         // Do any additional setup after loading the view.
         
+        navigationController?.setNavigationBarHidden(navigationController?.navigationBarHidden == false, animated: true)
+        
         profileImageView.layer.cornerRadius = profileImageView.frame.size.height/2
         profileImageView.layer.borderWidth = 1
         profileImageView.layer.borderColor = UIColor.lightGrayColor().CGColor
