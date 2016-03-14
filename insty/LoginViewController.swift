@@ -11,8 +11,9 @@ import Parse
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var usernameField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
+
+    @IBOutlet weak var usernameField: CustomTextField!
+    @IBOutlet weak var passwordField: CustomTextField!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     
@@ -133,4 +134,24 @@ class LoginViewController: UIViewController {
     }
     */
 
+}
+
+// MARK: - Custom Text Field Class
+
+class CustomTextField: UITextField{
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+        
+        self.layer.cornerRadius = 2
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor(white: 1, alpha: 0.1).CGColor
+        
+        self.backgroundColor = UIColor(white: 1, alpha: 0.07)
+        
+        self.textColor = UIColor.whiteColor()
+        let str = NSAttributedString(string: self.placeholder!, attributes: [NSForegroundColorAttributeName:UIColor(red: 200.0/255, green: 200.0/255, blue: 200.0/255, alpha: 1.0)])
+        self.attributedPlaceholder = str
+    }
+    
 }
