@@ -20,6 +20,25 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // Diagonal Gradients
+        let gradientLayer: CAGradientLayer = CAGradientLayer()
+        
+        gradientLayer.frame = self.view.bounds
+
+        let color1 = UIColor(red: 122.0/255, green: 79.0/255, blue: 174.0/255, alpha: 1.0).CGColor as CGColorRef
+        let color2 = UIColor(red: 143.0/255, green: 75.0/255, blue: 155.0/255, alpha: 1.0).CGColor as CGColorRef
+        let color3 = UIColor(red: 163.0/255, green: 42.0/255, blue: 150.0/255, alpha: 1.0).CGColor as CGColorRef
+        let color4 = UIColor(red: 179.0/255, green: 49.0/255, blue: 128.0/255, alpha: 1.0).CGColor as CGColorRef
+        
+        gradientLayer.colors = [color1, color2, color3, color4]
+        gradientLayer.locations = [0.0, 0.25, 0.75, 1.0]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        self.view.layer.insertSublayer(gradientLayer, atIndex: 0)
+        self.view.backgroundColor = UIColor(red: 200.0/255, green: 69.0/255, blue: 110.0/255, alpha: 1.0)
+        
+        // Configuring Button and Text Field Apperance
         usernameField.layer.cornerRadius = 2
         passwordField.layer.cornerRadius = 2
         
@@ -33,6 +52,8 @@ class LoginViewController: UIViewController {
         signUpButton.layer.borderColor = UIColor.whiteColor().CGColor
         signUpButton.enabled = false
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
