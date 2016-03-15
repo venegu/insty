@@ -20,10 +20,10 @@ class UploadViewController: UIViewController, UINavigationControllerDelegate, UI
         // Do any additional setup after loading the view.
         
         let logo = UIImage(named: "Instagram")!
-        let imageView = UIImageView(image: logo);
-        imageView.frame.size.height = (navigationController?.navigationBar.frame.size.height)! - 15;
-        imageView.contentMode = .ScaleAspectFit;
-        navigationItem.titleView = imageView;
+        let imageView = UIImageView(image: logo)
+        imageView.frame.size.height = (navigationController?.navigationBar.frame.size.height)! - 15
+        imageView.contentMode = .ScaleAspectFit
+        navigationItem.titleView = imageView
     }
     
     override func didReceiveMemoryWarning() {

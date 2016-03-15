@@ -19,10 +19,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         let logo = UIImage(named: "Instagram")!
-        let imageView = UIImageView(image: logo);
-        imageView.frame.size.height = (navigationController?.navigationBar.frame.size.height)! - 15;
-        imageView.contentMode = .ScaleAspectFit;
-        navigationItem.titleView = imageView;
+        let imageView = UIImageView(image: logo)
+        imageView.frame.size.height = (navigationController?.navigationBar.frame.size.height)! - 15
+        imageView.contentMode = .ScaleAspectFit
+        navigationItem.titleView = imageView
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -35,6 +35,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(animated: Bool) {
         fetchPosts()
         tableView.reloadData()
+        
+        if tableView.contentOffset.y == 0 {
+            print("Meow")
+            navigationController?.navigationBarHidden = false
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -22,8 +22,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         
         // Do any additional setup after loading the view.
         
-        navigationController?.setNavigationBarHidden(navigationController?.navigationBarHidden == false, animated: true)
-        
         profileImageView.layer.cornerRadius = profileImageView.frame.size.height/2
         profileImageView.layer.borderWidth = 1
         profileImageView.layer.borderColor = UIColor.lightGrayColor().CGColor
@@ -41,6 +39,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             self.title = "\(username!)"
             imageUsername = username!
         } else {
+            self.tabBarItem.title = "Me"
             self.title = "\(PFUser.currentUser()!.username!)"
             imageUsername = PFUser.currentUser()?.username
             let tap = UITapGestureRecognizer(target: self, action: Selector("setProfileImage:"))
@@ -55,6 +54,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     override func viewWillAppear(animated: Bool) {
 
         if PFUser.currentUser()?.username == username {
+            navigationController?.setNavigationBarHidden(navigationController?.navigationBarHidden == false, animated: true)
             self.title = "\(username)"
             imageUsername = username
             print(username)
@@ -63,6 +63,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             profileImageView.userInteractionEnabled = true
             profileImageView.addGestureRecognizer(tap)
         } else if username != nil {
+            navigationController?.setNavigationBarHidden(navigationController?.navigationBarHidden == false, animated: true)
             self.title = "\(username!)"
             imageUsername = username!
         } else {

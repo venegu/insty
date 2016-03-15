@@ -25,7 +25,8 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [x] Added a diagonal gradient in the login view!
+- [x] Added a diagonal gradient in the login view (kindof like the actual Instagram app).
+- [x] Made the image view circular, similar to the Instagram app.
 - [x] Modified the UITextFields to look more like the UITextFields in the login view of the Instagram app using a class.
 - [x] Created a rather swell UI with icons and pretty things that looks similar to the Instagram app (with my own touches).
 - [x] Accounted for user not typing anything into the form in the login view (the buttons are un-enabled until a password is provided).
