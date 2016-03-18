@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import ParseUI
 
-class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class ProfileViewController: UIViewController {
     
     @IBOutlet weak var profileImageView: PFImageView!
     var image: PFFile!
@@ -94,29 +94,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         }
     }
     
-    func setProfileImage(sender: UITapGestureRecognizer) {
-        let image = UIImagePickerController()
-        image.delegate = self
-        image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        image.allowsEditing = false
-        self.presentViewController(image, animated: true, completion: nil)
-    }
-    
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        profileImageView.image = image
-        let resizeImage = Post.resize(profileImageView.image!, newSize: CGSize(width: 240, height: 240))
-        Post.postUserProfileImage(resizeImage) { (success: Bool, error: NSError?) -> Void in
-            if success {
-                print("we have lift off!")
-            } else {
-                print(error!.localizedDescription)
-            }
-            
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }
-    }
-    
     @IBAction func onLogoutButton(sender: AnyObject) {
         PFUser.logOutInBackgroundWithBlock { (error: NSError?) -> Void in
             if error == nil {
@@ -141,5 +118,33 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     */
     
+}
+
+// MARK: - UIImagePickerControllerDelegate
+extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    // Image Picker methods
+    
+    func setProfileImage(sender: UITapGestureRecognizer) {
+        let image = UIImagePickerController()
+        image.delegate = self
+        image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        image.allowsEditing = false
+        self.presentViewController(image, animated: true, completion: nil)
+    }
+    
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        profileImageView.image = image
+        let resizeImage = Post.resize(profileImageView.image!, newSize: CGSize(width: 240, height: 240))
+        Post.postUserProfileImage(resizeImage) { (success: Bool, error: NSError?) -> Void in
+            if success {
+                print("we have lift off!")
+            } else {
+                print(error!.localizedDescription)
+            }
+            
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
 }
 

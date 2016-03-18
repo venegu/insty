@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PostCellDelegate {
+class FeedViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -47,24 +47,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts?.count ?? 0
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("InstagramCell", forIndexPath: indexPath) as! PostCell
-        cell.delegate = self
-        if posts != nil {
-            let post = posts![indexPath.row]
-            cell.post = post
-        }
-        
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
     
     // Getting and displayng 20 posts from Parse
     func fetchPosts() {
@@ -84,21 +66,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
     }
-    
-    var userProfileImage: PFFile?
-    var username:String?
-    
-    func postCellAuthorProfile(sender: AnyObject?) {
-        print("ran")
-        let view = (sender as! UITapGestureRecognizer).view
-        let cell = view?.superview?.superview as! PostCell
-        
-        let profileViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
-        self.navigationController?.pushViewController(profileViewController, animated: true)
-        profileViewController.image = cell.profileImageView.file
-        profileViewController.username = cell.nameLabel.text
-    }
-    
 
    /*
     // MARK: - Navigation
@@ -113,3 +80,49 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
 
 }
+
+// MARK: - UITableViewDataSource
+extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
+    // table view data source methods
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return posts?.count ?? 0
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("InstagramCell", forIndexPath: indexPath) as! PostCell
+        cell.delegate = self
+        if posts != nil {
+            let post = posts![indexPath.row]
+            cell.post = post
+        }
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+
+}
+
+// MARK: - PostCellDelegate
+extension FeedViewController: PostCellDelegate {
+    // Post cell methods    
+    
+    func postCellAuthorProfile(sender: AnyObject?) {
+        print("ran")
+        let view = (sender as! UITapGestureRecognizer).view
+        let cell = view?.superview?.superview as! PostCell
+        
+        let profileViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
+        self.navigationController?.pushViewController(profileViewController, animated: true)
+        profileViewController.image = cell.profileImageView.file
+        profileViewController.username = cell.nameLabel.text
+    }
+}
+

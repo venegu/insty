@@ -9,7 +9,7 @@
 import UIKit
 import MBProgressHUD
 
-class UploadViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class UploadViewController: UIViewController {
     
     @IBOutlet weak var importedImage: UIImageView!
     @IBOutlet weak var photoCaptionField: UITextField!
@@ -48,12 +48,6 @@ class UploadViewController: UIViewController, UINavigationControllerDelegate, UI
         self.presentViewController(image, animated: true, completion: nil)
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        print("Image selected")
-        self.dismissViewControllerAnimated(true, completion: nil)
-        importedImage.image = image
-    }
-    
     @IBAction func onSubmitButton(sender: AnyObject) {
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         
@@ -84,5 +78,16 @@ class UploadViewController: UIViewController, UINavigationControllerDelegate, UI
     }
     */
     
+}
+
+// MARK: - UIImagePickerControllerDelegate 
+extension UploadViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    // Image Picker methods
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        print("Image selected")
+        self.dismissViewControllerAnimated(true, completion: nil)
+        importedImage.image = image
+    }
 }
 
