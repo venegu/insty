@@ -54,7 +54,7 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
 
         if PFUser.currentUser()?.username == username {
-            navigationController?.setNavigationBarHidden(navigationController?.navigationBarHidden == false, animated: true)
+            //navigationController?.setNavigationBarHidden(navigationController?.navigationBarHidden == false, animated: true)
             self.title = "\(username)"
             imageUsername = username
             print(username)
@@ -63,7 +63,7 @@ class ProfileViewController: UIViewController {
             profileImageView.userInteractionEnabled = true
             profileImageView.addGestureRecognizer(tap)
         } else if username != nil {
-            navigationController?.setNavigationBarHidden(navigationController?.navigationBarHidden == false, animated: true)
+            //navigationController?.setNavigationBarHidden(navigationController?.navigationBarHidden == false, animated: true)
             self.title = "\(username!)"
             imageUsername = username!
         } else {

@@ -8,8 +8,9 @@
 
 import UIKit
 import Parse
+import AMScrollingNavbar
 
-class FeedViewController: UIViewController {
+class FeedViewController: ScrollingNavigationViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -18,6 +19,11 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        if let navigationController = self.navigationController as? ScrollingNavigationController {
+            navigationController.followScrollView(tableView, delay: 50.0)
+        }
+        
         let logo = UIImage(named: "Instagram")!
         let imageView = UIImageView(image: logo)
         imageView.frame.size.height = (navigationController?.navigationBar.frame.size.height)! - 15
@@ -26,8 +32,6 @@ class FeedViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.scrollsToTop = true
-        navigationController?.hidesBarsOnSwipe = true
         fetchPosts()
     }
     
@@ -35,10 +39,19 @@ class FeedViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         fetchPosts()
         tableView.reloadData()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if let navigationController = self.navigationController as? ScrollingNavigationController {
+            navigationController.followScrollView(tableView, delay: 50.0)
+        }
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
         
-        if tableView.contentOffset.y == 0 {
-            print("Meow")
-            navigationController?.navigationBarHidden = false
+        if let navigationController = self.navigationController as? ScrollingNavigationController {
+            navigationController.stopFollowingScrollView()
         }
     }
 
@@ -46,7 +59,6 @@ class FeedViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     // Getting and displayng 20 posts from Parse
     func fetchPosts() {
@@ -85,12 +97,8 @@ class FeedViewController: UIViewController {
 extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     // table view data source methods
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return posts?.count ?? 0
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return posts?.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -112,7 +120,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
 
 // MARK: - PostCellDelegate
 extension FeedViewController: PostCellDelegate {
-    // Post cell methods    
+    // Post cell methods
     
     func postCellAuthorProfile(sender: AnyObject?) {
         print("ran")
@@ -125,4 +133,3 @@ extension FeedViewController: PostCellDelegate {
         profileViewController.username = cell.nameLabel.text
     }
 }
-

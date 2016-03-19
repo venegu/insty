@@ -438,7 +438,7 @@
         <!--Activity-->
         <scene sceneID="g63-L7-40p">
             <objects>
-                <navigationController storyboardIdentifier="FeedNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="UhF-R1-ssm" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="FeedNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="UhF-R1-ssm" customClass="ScrollingNavigationController" customModule="AMScrollingNavbar" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Activity" image="Dog House Filled" id="aj6-RJ-4IO"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>

@@ -7,6 +7,7 @@ target 'insty' do
     pod 'Parse'
     pod 'ParseUI'
     pod 'MBProgressHUD'
+    pod 'AMScrollingNavbar', '~> 2.0.1'
 end
 
 target 'instyTests' do
