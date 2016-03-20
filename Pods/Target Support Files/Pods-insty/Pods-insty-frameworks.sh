@@ -89,6 +89,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-insty/MBProgressHUD.framework"
   install_framework "Pods-insty/Parse.framework"
   install_framework "Pods-insty/ParseUI.framework"
+  install_framework "Pods-insty/pop.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-insty/AMScrollingNavbar.framework"
@@ -96,4 +97,5 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-insty/MBProgressHUD.framework"
   install_framework "Pods-insty/Parse.framework"
   install_framework "Pods-insty/ParseUI.framework"
+  install_framework "Pods-insty/pop.framework"
 fi
