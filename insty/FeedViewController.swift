@@ -33,6 +33,11 @@ class FeedViewController: ScrollingNavigationViewController {
         tableView.delegate = self
         tableView.dataSource = self
         fetchPosts()
+        
+        // Initialize a UIRefreshControl
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
     }
     
     // Making sure most recent post is showing && time crunch better way to do this?
@@ -77,6 +82,11 @@ class FeedViewController: ScrollingNavigationViewController {
             }
         }
         
+    }
+    
+    func refreshControlAction(refreshControl: UIRefreshControl) {
+        fetchPosts()
+        refreshControl.endRefreshing()
     }
 
    /*

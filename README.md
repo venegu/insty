@@ -39,6 +39,7 @@ The following **additional** features are implemented:
 - [x] Hides navigation bar when swiping on the feed table view while simultaneously allowing the user to tap the status bar and scroll to the top and redisplaying the navigation bar, very similar to the actual Instagram app.
 - [x] Upon posting an image to parse the app segues back to the feed view and will display the recently added post and caption.
 - [x] Using a tap gesture to exit text field editing view.
+- [x] Adding refreshing upon pulling down the table view __NOTE:__ This feature is not pictured in the video walkthrough because I need someone else to compile my code and post a status for me to test this.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
@@ -61,7 +62,7 @@ The function that handles the secret values is called `retrieveKeys()` and can b
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+A problem that I still have currently is how slowly the images are loading (in general) and how scrolling causes the app to try to fetch images for the cell (whoops)... I think in the future I will try to load all the images (first 20) first somehow and then display the view to the user, instead of having the images being pulled from the server when you scroll on the cell.
 
 ## Credits
 
