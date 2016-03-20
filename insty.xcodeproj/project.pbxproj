@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2817529A1C9E3E5400DEFF0C /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281752991C9E3E5400DEFF0C /* LoginTextField.swift */; };
+		2817529C1C9E43DF00DEFF0C /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2817529B1C9E43DF00DEFF0C /* LoginButton.swift */; };
 		2843332F1C8F77E500AD2E6E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843332E1C8F77E500AD2E6E /* LoginViewController.swift */; };
 		284333311C90B08600AD2E6E /* key.plist in Resources */ = {isa = PBXBuildFile; fileRef = 284333301C90B08600AD2E6E /* key.plist */; };
 		28494F251C9101C50079A9C2 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28494F241C9101C50079A9C2 /* FeedViewController.swift */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		281752991C9E3E5400DEFF0C /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
+		2817529B1C9E43DF00DEFF0C /* LoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		2843332E1C8F77E500AD2E6E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		284333301C90B08600AD2E6E /* key.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = key.plist; sourceTree = "<group>"; };
 		28494F241C9101C50079A9C2 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			children = (
 				28B656F81C94FAE30093BC2A /* PostCell.swift */,
 				281752991C9E3E5400DEFF0C /* LoginTextField.swift */,
+				2817529B1C9E43DF00DEFF0C /* LoginButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2843332F1C8F77E500AD2E6E /* LoginViewController.swift in Sources */,
+				2817529C1C9E43DF00DEFF0C /* LoginButton.swift in Sources */,
 				2817529A1C9E3E5400DEFF0C /* LoginTextField.swift in Sources */,
 				28494F271C9102200079A9C2 /* UploadViewController.swift in Sources */,
 				28494F291C9102520079A9C2 /* ProfileViewController.swift in Sources */,

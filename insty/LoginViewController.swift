@@ -38,16 +38,6 @@ class LoginViewController: UIViewController {
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         self.view.layer.insertSublayer(gradientLayer, atIndex: 0)
         self.view.backgroundColor = UIColor(red: 200.0/255, green: 69.0/255, blue: 110.0/255, alpha: 1.0)
-        
-        signInButton.layer.cornerRadius = 2
-        signInButton.layer.borderWidth = 1
-        signInButton.layer.borderColor = UIColor.whiteColor().CGColor
-        signInButton.enabled = false
-        
-        signUpButton.layer.cornerRadius = 2
-        signUpButton.layer.borderWidth = 1
-        signUpButton.layer.borderColor = UIColor.whiteColor().CGColor
-        signUpButton.enabled = false
     }
     
     
@@ -83,6 +73,8 @@ class LoginViewController: UIViewController {
             if user != nil {
                 print("logged in")
                 self.performSegueWithIdentifier("loginSegue", sender: nil)
+            } else {
+                print(error?.localizedDescription)
             }
             
         }
