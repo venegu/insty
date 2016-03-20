@@ -68,6 +68,9 @@ class UploadViewController: UIViewController {
         }
     }
     
+    @IBAction func onTap(sender: AnyObject) {
+        view.endEditing(true)
+    }
     /*
     // MARK: - Navigation
     

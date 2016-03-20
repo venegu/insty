@@ -340,6 +340,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Zjf-h5-dci" firstAttribute="top" secondItem="9LV-Me-zPc" secondAttribute="bottom" constant="10" id="75v-YE-Fo3"/>
                             <constraint firstItem="HjZ-dX-CCN" firstAttribute="centerX" secondItem="P2i-dL-5F7" secondAttribute="centerX" id="8se-DX-uKR"/>
@@ -358,6 +359,9 @@
                             <constraint firstItem="Q4c-Fo-Dqj" firstAttribute="leading" secondItem="P2i-dL-5F7" secondAttribute="leading" constant="20" id="tC3-dx-bSG"/>
                             <constraint firstItem="Zjf-h5-dci" firstAttribute="leading" secondItem="P2i-dL-5F7" secondAttribute="leadingMargin" constant="38" id="v8v-fF-5IQ"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="HGt-tJ-P3I" appends="YES" id="YgZ-gG-6cN"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="QQ8-Ws-HJc"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
@@ -368,6 +372,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i4K-dx-b4X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="HGt-tJ-P3I">
+                    <connections>
+                        <action selector="onTap:" destination="CJh-0E-oZN" id="Idn-ZU-npT"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1846" y="219"/>
         </scene>
