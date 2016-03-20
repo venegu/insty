@@ -12,8 +12,8 @@ import Parse
 class LoginViewController: UIViewController {
 
 
-    @IBOutlet weak var usernameField: CustomTextField!
-    @IBOutlet weak var passwordField: CustomTextField!
+    @IBOutlet weak var usernameField: LoginTextField!
+    @IBOutlet weak var passwordField: LoginTextField!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     
@@ -38,10 +38,6 @@ class LoginViewController: UIViewController {
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         self.view.layer.insertSublayer(gradientLayer, atIndex: 0)
         self.view.backgroundColor = UIColor(red: 200.0/255, green: 69.0/255, blue: 110.0/255, alpha: 1.0)
-        
-        // Configuring Button and Text Field Apperance
-        usernameField.layer.cornerRadius = 2
-        passwordField.layer.cornerRadius = 2
         
         signInButton.layer.cornerRadius = 2
         signInButton.layer.borderWidth = 1
@@ -134,24 +130,4 @@ class LoginViewController: UIViewController {
     }
     */
 
-}
-
-// MARK: - Custom Text Field Class
-
-class CustomTextField: UITextField {
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
-        
-        self.layer.cornerRadius = 2
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor(white: 1, alpha: 0.1).CGColor
-        
-        self.backgroundColor = UIColor(white: 1, alpha: 0.07)
-        
-        self.textColor = UIColor.whiteColor()
-        let str = NSAttributedString(string: self.placeholder!, attributes: [NSForegroundColorAttributeName:UIColor(red: 200.0/255, green: 200.0/255, blue: 200.0/255, alpha: 1.0)])
-        self.attributedPlaceholder = str
-    }
-    
 }
