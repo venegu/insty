@@ -2,7 +2,7 @@
 
 **Insty** is a photo sharing app using Parse as its backend.
 
-Time spent: **9** hours spent in total
+Time spent: **14** hours spent in total
 
 ## User Stories
 
@@ -25,13 +25,15 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
+- [x] Obfuscated my own Parse account credentials by placing them in a seperate plist file that is in my .gitignore. To run this app see [instructions](https://github.com/venegu/insty#installation) below.
 - [x] Added a diagonal gradient in the login view (kindof like the actual Instagram app).
 - [x] Made the image view circular, similar to the Instagram app.
-- [x] Modified the UITextFields to look more like the UITextFields in the login view of the Instagram app using a class.
+- [x] Wrote a reusable text field class (outside of the VC) that makes the text fields in the login view look similar to the actual Instagram app text fields.
+- [x] Wrote a reusable button class (outside of the VC) that makes the buttons in the login view look similar to the actual Instagram app buttons.
+- [x] When the buttons are clicked they are animated and change size using pop.
 - [x] Created a rather swell UI with icons and pretty things that looks similar to the Instagram app (with my own touches).
 - [x] Accounted for user not typing anything into the form in the login view (the buttons are un-enabled until a password is provided).
-- [x] When the password text field is edited the buttons opacity is animated, similar to the Instagram app. If there is text typed into the password text field the opacity increases otherwise it decreases signifying that the buttons won't work if tapped (UX things I guess?).
-- [x] When the buttons are clicked they are animated and change size using pop.
+- [x] When the password text field is edited the buttons opacity is animated and increased, similar to the Instagram app. And if there is text typed into the password text field the opacity increases otherwise it decreases signifying that the buttons won't work if tapped (UX things I guess?).
 - [x] Hiding password entry in the login view.
 - [x] Auto layout @_ @.
 - [x] Hides navigation bar when swiping on the feed table view while simultaneously allowing the user to tap the status bar and scroll to the top and redisplaying the navigation bar, very similar to the actual Instagram app.
@@ -50,6 +52,12 @@ Here's a walkthrough of implemented user stories:
 <img src='https://github.com/venegu/insty/raw/master/insty.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
+## Installation
+
+To run this app you will need to provide your own [Parse credentials](https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FParsePlatform%2Fparse-server-example&template=https%3A%2F%2Fgithub.com%2FParsePlatform%2Fparse-server-example) and create a with these values `key.plist` file.
+
+The function that handles the secret values is called `retrieveKeys()` and can be found in the `AppDelegate.swift`.
 
 ## Notes
 
