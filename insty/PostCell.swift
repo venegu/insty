@@ -43,6 +43,7 @@ class PostCell: PFTableViewCell {
             nameLabel.userInteractionEnabled = true
             nameLabel.addGestureRecognizer(nameTap)
             
+            profileImageView.image = nil
             profileImageView.layer.cornerRadius = profileImageView.frame.size.height/2
             profileImageView.layer.borderWidth = 1
             profileImageView.layer.borderColor = UIColor.lightGrayColor().CGColor
@@ -61,6 +62,7 @@ class PostCell: PFTableViewCell {
             
             self.timeLabel.text = Post.gettingTimestamp(post.createdAt!.timeIntervalSinceNow)
             
+            photoImageView.image = nil
             if let mediaData = post["media"] as? PFFile {
                 self.photoImageView.file = mediaData
                 self.photoImageView.loadInBackground()
